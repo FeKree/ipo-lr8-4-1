@@ -1,21 +1,29 @@
 import json
 count = 0
-end = True
 with open("Marigold.json", "r", encoding="utf-8") as file:
     Marigold_data = json.load(file)
-    def fir():
-        global count 
+while True:
+    print("""Выберите действие:
+          1: Вывести все записи
+          2: Вывести запись по полю
+          3: Добавить запись 
+          4: Удалить запись по полю
+          5: Выйти из программы
+          """)
+    n = int(input("Введите номер: "))
+    if n == 1:
         for i in Marigold_data:
             print(f"""
             Код: {i['id']}, 
             Имя: {i['name']},                       
             Фабрика: {i['manufacturer']}, 
             Заправлена: {i['is_petrol']},    
-            Объем Бака: {i['tank_volume']}
+            Объем Бака: {i['tank_volume']} 
             """)
         count += 1
-    def sec():
-        global count
+    elif n == 2:
+        pr = False
+        ind = 0
         id_num = int(input("Введите ID машины, которая требуется "))
         for i in Marigold_data:
             if id_num == i['id']:
@@ -26,11 +34,13 @@ with open("Marigold.json", "r", encoding="utf-8") as file:
                 Заправлена: {i['is_petrol']},    
                 Объем Бака: {i['tank_volume']} 
                 """)
-                count += 1
-                return
-    def thir():
-        global count
+                pr = True
+                break
+            ind += 1
+        count +=1
+    elif n == 3:
         id_search = int(input("Введите номер машины: "))
+        pr1 = False
         for i in Marigold_data:
             if i['id'] == id_search:
                 pr1 = True
@@ -55,42 +65,25 @@ with open("Marigold.json", "r", encoding="utf-8") as file:
             with open("strike.json", 'w', encoding='utf-8') as output_file: 
                 json.dump(Marigold_data, output_file, ensure_ascii=False, indent=2)
             print("Машина успешно добавлена.")
-        count += 1
-    def fourth():
-        global count
+        count += 1    
+    elif n == 4:
+        pr2 = False
         id_delete = int(input("Введите ID машины, которую требуется удалить "))
         for i in Marigold_data:
             if id_delete == i['id']:
                 Marigold_data.remove(i)
-                with open("Marigold.json", 'w', encoding='utf-8') as output_file:
-                    json.dump(Marigold_data, output_file, ensure_ascii=False, indent=2)
-                print("Машина удалена.")
-                count += 1
-    def fifth():
-        global end
-        print(f"Программа завершила свою работу. Кол-во операций равно {count}.")
-        end = False
-    def menu():
-        while end:
-            print("""Выберите действие:
-            1: Вывести все записи
-            2: Вывести запись по полю
-            3: Добавить запись 
-            4: Удалить запись по полю
-            5: Выйти из программы
-            """)
-            n = int(input("Введите номер: "))
-            if n == 1:
-                fir()
-            elif n == 2:
-                sec()
-            elif n == 3:
-                thir()
-            elif n == 4: 
-                fourth()
-            elif n == 5:
-                fifth()
-            else:
-                print("Введено некорректное число!")          
+                pr2 = True
+                break
+        if not pr2:
+            print("Данное ID не найдено.")
+        else:
+            with open("Marigold.json", 'w', encoding='utf-8') as output_file:
+                json.dump(Marigold_data, output_file, ensure_ascii=False, indent=2)
+            print("Машина удалена.")
+        count += 1    
 
-menu()
+    elif n == 5:
+        print(f"Программа завершила свою работу. Кол-во операций равно {count}.")
+        break
+    else:
+        print("Требовалось ввести число от 1 до 5, введите повторно!")
