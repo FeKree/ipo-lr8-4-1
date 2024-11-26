@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Nissan Silvia S15",
+    "manufacturer": "Nissan",
+    "is_petrol": true,
+    "tank_volume": 65
+  },
+  {
+    "id": 2,
+    "name": "Porshe Taycan",
+    "manufacturer": "Porshe",
+    "is_petrol": false,
+    "tank_volume": 100
+  },
+  {
+    "id": 3,
+    "name": "BMW M3 G81 Touring",
+    "manufacturer": "BMW",
+    "is_petrol": true,
+    "tank_volume": 59
+  },
+  {
+    "id": 4,
+    "name": "Maybach W223 S900 LWB",
+    "manufacturer": "Mercedes Benz",
+    "is_petrol": true,
+    "tank_volume": 80
+  },
+  {
+    "id": 5,
+    "name": "Nissan GTR R35",
+    "manufacturer": "Nissan",
+    "is_petrol": true,
+    "tank_volume": 74
+  }
+]
